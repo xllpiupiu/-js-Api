@@ -1,5 +1,8 @@
 # 实现-js-Api
 实现一些js提供的APi 比如new call bind apply reduce forEach...等
+> 文件夹js源码大多出现在手撕环境  算法文件下面是算法的分类
+
+![image](https://user-images.githubusercontent.com/79959257/135451503-b042b89b-7a52-4f8d-810d-cc2731b687aa.png)
 ## 目前已经实现的方法
 1. 防抖节流
 2. 判断字符串组成
