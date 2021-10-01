@@ -1,4 +1,4 @@
-//146 LRU缓存
+//146 LRU缓存 最近最少使用
 var LRUCache = function(capacity) {
     this.cache = new Map();
     this.capacity = capacity

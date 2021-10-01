@@ -25,4 +25,7 @@
 19. myassign实现
 20. new实现
 21. reduce实现
-
+22. 单链表
+23. 双链表
+24. 实现findIndex 
+25. 实现数组的Api splice
