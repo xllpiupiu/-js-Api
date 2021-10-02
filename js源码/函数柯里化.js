@@ -27,11 +27,11 @@ function add() {
         arr.push(...arguments)
         return _adder;
     }
-    _adder.toString = function () {
+    _adder.valueOf = function () {
         return arr.reduce((a, b) => a + b);
     }
     return _adder;
 }
 let res = add(1)(2)(3, 4);
-console.log(add(1)(2, 3)+0)
+console.log(add(1)(2, 3).valueOf())
 console.log(res+0)
