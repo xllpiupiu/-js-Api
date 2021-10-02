@@ -31,3 +31,4 @@
 25. 实现数组的Api splice
 26. 模板解析
 27. async await的实现
+28. 字符串的indexOf实现
