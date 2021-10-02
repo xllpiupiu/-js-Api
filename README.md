@@ -30,3 +30,4 @@
 24. 实现findIndex 
 25. 实现数组的Api splice
 26. 模板解析
+27. async await的实现

@@ -16,6 +16,7 @@ let oldObj = {
         'value':'hello',
         'id':23
     },
+    'd':[1,2,3],
     'fun':function(){}
 }
 /**
@@ -34,7 +35,31 @@ oldObj['c']['id'] = 333;
 console.log('newObj2: ', newObj2);//{ a: { name: '消防', age: 22 }, b: 'b', c: { value: 'hello', id: 23 } }
 console.log('oldObj:>>>',oldObj)//{ a: { name: '消防', age: 22 }, b: 'b', c: { value: 'hello', id: 333 } }
 /**
+ * 实现深拷贝需要注意的点：
+ */
+ const parent = {
+    a: 1,
+    b: 2,
+    c: 3
+}
+const child = {
+    d: 4,
+    e: 5,
+    [Symbol()]: 6
+}
+child.__proto__ = parent
+Object.defineProperty(child, "d", { enumerable: false })
+console.log("Object.keys()>>>>>", Object.keys(child))//Object.keys()>>>>> [ 'e' ]
+console.log("Object.getOwnPropertyNames>>>>",Object.getOwnPropertyNames(child))//Object.getOwnPropertyNames>>>> [ 'd', 'e' ]
+console.log("Reflect.ownKeys>>>>",Reflect.ownKeys(child))//Reflect.ownKeys>>>> [ 'd', 'e', Symbol() ]
+
+/**
  * 3. 使用递归
+ * 获取属性for in  
+ * Object.keys(obj)  
+ * Object.getOwnPropertyNames(obj)  
+ * Reflect.ownKeys 
+ * 以上几种方法的区别
  */
 function deepClone(oldObj) {
     let newObj = Array.isArray(oldObj)?[]:{};
@@ -54,6 +79,7 @@ let newObj3 = deepClone(oldObj);
 
 console.log(newObj3);
 oldObj['c']['id'] = 55;
+oldObj['d'][0] = 22;
 console.log('更改原对象之后newObj',newObj3);
 //{
 //     a: { name: '消防', age: 22 },

@@ -62,7 +62,7 @@ function fun2(arr) {
     _flat(arr);
     return newArr;
 }
-console.log('func2',fun2(arr))
+console.log('func2', fun2(arr))
 
 /**
  * 拍平到指定次数
@@ -75,15 +75,11 @@ function flat2(arr, n) {
     let newArr = [];
     function _flat(arr) {
         for (let i = 0; i < arr.length; i++) {
-            if (count < n) {
-                if (Array.isArray(arr[i])) {
-                    count++;
-                    _flat(arr[i])
-                } else {
-                    newArr.push(arr[i])
-                }
+            if (count < n && Array.isArray(arr[i])) {
+                count++;
+                _flat(arr[i])
             } else {
-                console.log('ddd',arr[i])
+                console.log('ddd', arr[i])
                 newArr.push(arr[i])
             }
         }
@@ -91,4 +87,4 @@ function flat2(arr, n) {
     _flat(arr)
     return newArr;
 }
-console.log('flat>>>', flat2([1, 2, [3, [4], 5]], 0))
+console.log('flat>>>', flat2([1, 2, [3, [4], 5]], 1))
