@@ -33,3 +33,8 @@
 27. async await的实现
 28. 字符串的indexOf实现
 29. url解析
+30. forEach里面使用异步async promise不起作用
+31. 修改print函数打印0-99
+32. 实现异步串行编程createFlow
+33. 函数柯里化
+34. 模拟实现localStorage (暂未解决)
