@@ -1,4 +1,9 @@
 /**
+ * 参考地址：
+ * https://github.com/sisterAn/JavaScript-Algorithms/issues/104
+ * 地址：https://zhuanlan.zhihu.com/p/97813399
+ */
+/**
  * 1. 实现ajax的get请求
  */
 const Ajax = {

@@ -14,17 +14,20 @@ function testMyCall(a,b,c) {
 testMyCall.call(obj,1,2,3);
 
 Function.prototype.myCall = function (obj) {
-    if (!obj) {
-        obj = window;
-    }
-    // let args = [];
+    obj = obj?Object(obj):window
+    let args = [];
     obj.func = this;//使用了myCall方法的函数
-    // for (let i = 1; i < arguments.length; i++) {
-    //     args.push("arguments["+i+"]");
-    // }
-    // eval("obj.func("+args+")");
-    let arr = Array.prototype.slice.call(arguments,1);
-    obj.func(...arr);
+    for (let i = 1; i < arguments.length; i++) {
+        args.push("arguments["+i+"]");
+    }
+   let res = eval("obj.func("+args+")");
+    // let args = [...arguments].slice(1)
+    //res = obj.func(...arr);
     delete obj.func;
+    return res
 }
 testMyCall.myCall(obj,1,1,1)
+// 类数组对象转为数组
+let arr1 = Array.prototype.slice.call(arguments)
+let arr2 = Array.from(arguments)
+let arr3 = [...arguments]
