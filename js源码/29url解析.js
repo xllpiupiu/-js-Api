@@ -9,7 +9,9 @@ function getUrlParams(url) {
     console.log('params: ', params);
     const obj = {}
     //使用forEach map只能循环数组吗？？？
-    params.forEach((item,index)=>obj[index] = item)
+    params.forEach((val,key)=>{
+        obj[key] = val
+    })
     return obj
 }
 console.log(getUrlParams(url))

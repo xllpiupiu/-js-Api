@@ -52,6 +52,7 @@ myLinkedList.prototype.append = function (val) {
             curNode = curNode.next;
         }
         curNode.next = appendNode;
+        this.tail = appendNode;
     }
     this.length++;
 }

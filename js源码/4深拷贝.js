@@ -37,7 +37,7 @@ console.log('oldObj:>>>',oldObj)//{ a: { name: '消防', age: 22 }, b: 'b', c: {
 /**
  * 实现深拷贝需要注意的点：
  */
- const parent = {
+ const parent1 = {
     a: 1,
     b: 2,
     c: 3
@@ -47,7 +47,7 @@ const child = {
     e: 5,
     [Symbol()]: 6
 }
-child.__proto__ = parent
+child.__proto__ = parent1
 Object.defineProperty(child, "d", { enumerable: false })
 console.log("Object.keys()>>>>>", Object.keys(child))//Object.keys()>>>>> [ 'e' ]
 console.log("Object.getOwnPropertyNames>>>>",Object.getOwnPropertyNames(child))//Object.getOwnPropertyNames>>>> [ 'd', 'e' ]

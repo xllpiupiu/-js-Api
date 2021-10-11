@@ -40,4 +40,5 @@ Array.prototype.myMap = function (callback, thisArg) {
     return newArry
 }
 let res = array.map(item => item * 2)
+console.log('array: ', array);
 console.log('res: ', res);

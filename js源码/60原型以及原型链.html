@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+    //   function test() {}
+    //   console.log(test.prototype.__proto__)
+    var o = {
+        a:10,
+        b:{
+            a: 'hello',
+            fn:function(){
+                console.log(this)
+            }
+        }
+    }
+    o.b.fn()//fn里面的this指向b这个对象
+    const f = o.b.fn
+    f()//这里的fn this指向window 因为f在全局
+    function fn() {
+        this.user='xl'
+        return 1
+    }
+    var a = new fn()
+    console.log(a.user)
+    const obj = {
+        hell:'hell',
+        sayThis:()=>{
+            console.log('sayThis>>>',this.hell)
+        }
+    }
+    obj.sayThis()
+    </script>
+  </body>
+</html>

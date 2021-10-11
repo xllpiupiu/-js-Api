@@ -5,7 +5,7 @@ Object.myassign = function (target, ...src) {
     let length = src.length;
     for (let i = 0; i < length; i++) {
         if (src[i]) {
-            for (let key of Object.keys(src[i])) {
+            for (let key of Object.getOwnPropertyNames(src[i])) {
                 target[key] = src[i][key];
             }
         }
