@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100%;
+        height: 100vh;
+        background-color: aqua;
+        display: flex;
+        flex-direction: column;
+      }
+      .box1 {
+        width: 100%;
+        height: 200px;
+        background-color: blueviolet;
+        transition: width 1s ease 1s;
+      }
+      .box1:hover {
+        height: 400px;
+      }
+      .box2 {
+        width: 100%;
+        height: 100%;
+        background-color: burlywood;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="box1"></div>
+      <div class="box2"></div>
+    </div>
+    <script>
+      const name = "a";
+      class A {
+        constructor() {
+          this.name = "b";
+        }
+        getName = () => {
+          console.log(this.name);
+        };
+      }
+      const a = new A();
+      a.getName(); //b
+      console.log(A.prototype);
+      Number.prototype.add = function () {
+        console.log(this);
+      };
+      const b = 3;
+      b.add(1);
+      const person = {
+        name: "lisa",
+        getThis() {
+          console.log(this);
+        },
+        getName: () => {
+          console.log("this.name>>", this.name);
+        },
+      };
+      person.getName();
+      // person.getThis();
+    </script>
+  </body>
+</html>

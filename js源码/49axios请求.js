@@ -1,13 +1,22 @@
 /**
  * 实现axios按顺序请求
  */
+async function requestTotal(urls) {
+    for(const url of urls) {
+        const response = await axios(url,{})
+        console.log('response: ', response);
+    }
+}
 function request1(url) {
     return axios.get(url)
 }
 function request2(url) {
     return axios.get(url)
 }
-axios.all([request1()]).then(axios.spread(request2()))
+axios.all([request1(),request2()]).then(axios.spread((res1,res2)=>{
+    console.log(res1.data)
+    console.log(res2.data)
+}))
 
 /**
  * 2. axios简单封装

@@ -9,6 +9,7 @@
  * 正则参考：https://www.cnblogs.com/xiaonian8/p/14017545.html
  * 1. 先了解下正则相关知识
  * 正则的 test exec方法返回值
+ * .: 匹配换行符之外任意的单词
  */
 let regex = /hello/
 let str = 'hello world!'

@@ -8,7 +8,7 @@ console.log('unique: ', unique);
 /**
  * 2. 实现并集 交集 差集
  */
-let arr1 = [1,2,3,3]
+let arr1 = [1,2,2,3,3,3]
 let arr2 = [2,3,4,5]
 let arr11 = new Set(arr1)
 let arr22 = new Set(arr2)

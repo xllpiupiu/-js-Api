@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>箭头函数的this</title>
+  </head>
+  <body>
+    <script>
+      var name = "window";
+      const obj1 = {
+        name: "xll",
+        fn1: function () {
+          console.log(this.name);
+        },
+        fn2: () => console.log(this.name),
+        fn3: function () {
+          return function () {
+              console.log(this.name)
+          };
+        },
+        fn4: function () {
+            return () => console.log(this.name)
+        }
+      };
+      const obj2 = {
+          name: 'xzz'
+      }
+      obj1.fn1()//xll
+      obj1.fn1.call(obj2)//xzz
+
+      obj1.fn2()//window
+      obj1.fn2.call(obj2)//window
+
+      obj1.fn3()()//window
+      obj1.fn3().call(obj2)//xzz
+      obj1.fn3.call(obj2)()//window
+
+      obj1.fn4().call(obj2)//xll
+      obj1.fn4.call(obj2)()//xzz
+      console.log(testFn)
+      function testFn() {
+          console.log('hello')
+      }
+      console.log(testFn)
+    </script>
+  </body>
+</html>

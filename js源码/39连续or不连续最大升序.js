@@ -32,9 +32,9 @@ function findMaxAesc3(arr) {
     return max
 }
 // let arr = [101,19,12,34,51,32,7,103,8,104,1,105,2,106]
-let arr = [2, 1, 3, 4, 5]
-console.log(findMaxAesc(arr))
-console.log(findMaxAesc3(arr))
+let arr = [0, 1, 0, 3, 2,3]
+// console.log(findMaxAesc(arr))
+// console.log(findMaxAesc3(arr))
 //不连续最大升序数量
 function findMaxAesc2(arr) {
     if (arr.length === 0) return 0
@@ -44,8 +44,8 @@ function findMaxAesc2(arr) {
         let num = 1
         for (let j = i + 1; j < leng; j++) {
             if (arr[j] > slow) {
-                num++
                 slow = arr[j]
+                num++
             }
         }
         res = Math.max(res, num)

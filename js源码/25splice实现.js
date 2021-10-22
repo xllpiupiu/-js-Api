@@ -5,9 +5,9 @@
 Array.prototype._splice = function () {
     //1. 记录入参个数
     let argumentsLen = arguments.length;
-    let start = arguments[0], deleteCount = arguments[1];
     //2. 数组长度
     let arrayLength = this.length;
+    let start = arguments[0], deleteCount = arguments[1];
     let arr = Object(this);
     //3. 添加元素个数
     let addCount = argumentsLen > 2 ? argumentsLen - 2 : 0
@@ -21,7 +21,7 @@ Array.prototype._splice = function () {
     //6. 记录删除的元素
     let delElements = new Array(delCount);
     recordDelElements(startIdx, delCount, arr, delElements);
-    //7. 判断是否是密封对象
+    //7. 判断是否是密封对象 密封对象是指那些不能添加新的属性，不能删除已有属性，以及不能修改已有属性的可枚举性、可配置性、可写性，但可能可以修改已有属性的值的对象。
     if (delCount !== addCount && Object.isSealed(arr)) {
         throw new TypeError('the arr is sealed')
     }
@@ -40,6 +40,7 @@ Array.prototype._splice = function () {
     arr.length = arrayLength - delCount + addCount;
     return delElements;
 }
+
 function computeSpliceStartIdx(start, arrayLength) {
     if (start < 0) {
         start += arrayLength;
@@ -57,32 +58,32 @@ function computeSpiceDelCount(startIdx, deleteCount, arrayLength) {
     return deleteCount;
 }
 //记录删除的元素
-function recordDelElements(startIdx,delCount,arr,delElements) {
-    for(let i=0;i<delCount;i++) {
-        delElements[i] = arr[startIdx+i];
+function recordDelElements(startIdx, delCount, arr, delElements) {
+    for (let i = 0; i < delCount; i++) {
+        delElements[i] = arr[startIdx + i];
     }
 }
 //移动数组
-function moveElements(startIdx, delCount, arr, addCount){
+function moveElements(startIdx, delCount, arr, addCount) {
     let over = addCount - delCount;
     console.log('over: ', over);
-    if(over>0) {
+    if (over > 0) {
         //增加的数大于了删除的数  向后移动
-        for(let i=arr.length-1;i>=startIdx+delCount;i--) {
-            arr[i+over] = arr[i];
+        for (let i = arr.length - 1; i >= startIdx + delCount; i--) {
+            arr[i + over] = arr[i];
         }
-    } else if(over<0) {
+    } else if (over < 0) {
         //增加的数小于删除的数 向前移动
-        for(let i=startIdx+delCount+over;i<=arr.length-1;i++) {
-            if(i+Math.abs(over)>arr.length-1) {
+        for (let i = startIdx + delCount + over; i <= arr.length - 1; i++) {
+            if (i + Math.abs(over) > arr.length - 1) {
                 delete arr[i]
                 continue
             }
-            arr[i] = arr[i+Math.abs(over)];
+            arr[i] = arr[i + Math.abs(over)];
         }
         console.log('arr: over<0', arr);
     }
 }
 let arr = [1, 2, 3, 4, 5];
-arr._splice(1,1,6,7)
+arr._splice(1, 1, 6, 7)
 console.log('arr: ', arr);//arr:  [ 1, 6, 7, 5 ]

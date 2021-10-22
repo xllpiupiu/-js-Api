@@ -34,4 +34,4 @@ function add() {
 }
 let res = add(1)(2)(3, 4);
 console.log(add(1)(2, 3).valueOf())
-console.log(res+0)
+console.log(res.valueOf())

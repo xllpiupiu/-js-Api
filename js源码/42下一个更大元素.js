@@ -14,6 +14,7 @@
             res[stack[stack.length - 1]] = nums[i % numsLen]
             stack.pop()
         }
+        //栈里面保存下标
         stack.push(i % numsLen)
     }
     return res

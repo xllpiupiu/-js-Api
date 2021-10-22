@@ -18,7 +18,7 @@ function _parseInt(str) {
 }
 console.log(_parseInt('12'))
 //可以传两个参数  parsenInt('123',5)将'123'看作5进制 返回10进制
-function _parseInt2(str, radix) {
+function _parseInt2(str, radix = 10) {
     //1. 对入参做判断
     let strType = typeof str
     if (strType !== 'string' && strType !== 'number') return NaN
@@ -27,15 +27,13 @@ function _parseInt2(str, radix) {
     let strHandle = String(str).trim().split('.')[0]
     console.log('strHandle: ', strHandle);
     if (strHandle.length === 0) return NaN
-    //3. radix处理
-    if (!radix) radix = 10
     //4. 转换逻辑  将字符反转
-    let strReverse = strHandle.split('').reverse().join('')
-    console.log('strReverse: ', strReverse);
+    // let strReverse = strHandle.split('').reverse().join('')
+    // console.log('strReverse: ', strReverse);
     let res = 0
-    for (let i = 0, len = strReverse.length; i < len; i++) {
-        if (strReverse[i] >= radix) return NaN
-        res += strReverse[i] * Math.pow(radix, i)
+    for (let len = strHandle.length, i = len - 1; i >= 0; i--) {
+        if (strHandle[i] >= radix) return NaN
+        res += strHandle[i] * Math.pow(radix, len-1-i)
     }
     return res
 }
